@@ -20,7 +20,7 @@
 
     <section class="main-content">
       <h3>
-<a id="players" class="anchor" href="#players" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vicki's Team</h3>
+<a id="players" class="anchor" href="#players" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>{0}'s Team</h3>
 
 <table>
 <thead>
@@ -36,49 +36,49 @@
 </thead>
 <tbody>
 <tr>
-<td>Kevin Durant</td>
-<td>78</td>
-<td>10</td>
-<td>21</td>
-<td>1</td>
-<td>1</td>
-<td>128.5</td>
+<td>{1}</td>
+<td>{2[points]}</td>
+<td>{2[assists]}</td>
+<td>{2[rebounds]}</td>
+<td>{2[steals]}</td>
+<td>{2[blocks]}</td>
+<td>{2[total]}</td>
 </tr>
 <tr>
-<td>Kawhi Leonard</td>
-<td>65</td>
-<td>2</td>
-<td>12</td>
-<td>10</td>
-<td>9</td>
-<td>124.0</td>
+<td>{3}</td>
+<td>{4[points]}</td>
+<td>{4[assists]}</td>
+<td>{4[rebounds]}</td>
+<td>{4[steals]}</td>
+<td>{4[blocks]}</td>
+<td>{4[total]}</td>
 </tr>
 <tr>
-<td>Klay Thompson</td>
-<td>67</td>
-<td>11</td>
-<td>16</td>
-<td>4</td>
-<td>0</td>
-<td>115.5</td>
+<td>{5}</td>
+<td>{6[points]}</td>
+<td>{6[assists]}</td>
+<td>{6[rebounds]}</td>
+<td>{6[steals]}</td>
+<td>{6[blocks]}</td>
+<td>{6[total]}</td>
 </tr>
 <tr>
-<td>Chris Paul</td>
-<td>53</td>
-<td>16</td>
-<td>12</td>
-<td>3</td>
-<td>0</td>
-<td>101.0</td>
+<td>{7}</td>
+<td>{8[points]}</td>
+<td>{8[assists]}</td>
+<td>{8[rebounds]}</td>
+<td>{8[steals]}</td>
+<td>{8[blocks]}</td>
+<td>{8[total]}</td>
 </tr>
 <tr>
-<td>Stephen Curry</td>
-<td>24</td>
-<td>2</td>
-<td>7</td>
-<td>3</td>
-<td>0</td>
-<td>43.5</td></tr>
+<td>{9}</td>
+<td>{10[points]}</td>
+<td>{10[assists]}</td>
+<td>{10[rebounds]}</td>
+<td>{10[steals]}</td>
+<td>{10[blocks]}</td>
+<td>{10[total]}</td></tr>
 </tbody>
 </table>
 <h3><a href="../index.html">Back to Standings</a></h3>
