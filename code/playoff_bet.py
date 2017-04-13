@@ -45,7 +45,7 @@ def calc_team_totals(team):
         totals.loc[p, 'rebounds'] = stats['REB'].sum()
         totals.loc[p, 'steals'] = stats['STL'].sum()
         totals.loc[p, 'blocks'] = stats['BLK'].sum()
-        totals.loc[p, 'total'] = (stats['PTS'].sum() + 1.5*(stats['AST'].sum() + stats['REB'].sum()) +
+        totals.loc[p, 'total'] = (stats['PTS'].sum() + 2.0*(stats['AST'].sum() + stats['REB'].sum()) +
                                   2.0*(stats['STL'].sum() + stats['BLK'].sum()))
 
     return totals
