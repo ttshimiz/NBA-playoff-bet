@@ -57,11 +57,11 @@ if __name__ == '__main__':
     taro_totals = calc_team_totals(taro)
     johnny_totals = calc_team_totals(johnny)
 
-    vicki_total_pts = (vicki_totals['points'].sum() + 1.5*(vicki_totals['assists'].sum() + vicki_totals['rebounds'].sum()) +
+    vicki_total_pts = (vicki_totals['points'].sum() + 2.0*(vicki_totals['assists'].sum() + vicki_totals['rebounds'].sum()) +
                       2.0*(vicki_totals['steals'].sum() + vicki_totals['blocks'].sum()))
-    taro_total_pts = (taro_totals['points'].sum() + 1.5*(taro_totals['assists'].sum() + taro_totals['rebounds'].sum()) +
+    taro_total_pts = (taro_totals['points'].sum() + 2.0*(taro_totals['assists'].sum() + taro_totals['rebounds'].sum()) +
                       2.0*(taro_totals['steals'].sum() + taro_totals['blocks'].sum()))
-    johnny_total_pts = (johnny_totals['points'].sum() + 1.5*(johnny_totals['assists'].sum() + johnny_totals['rebounds'].sum()) +
+    johnny_total_pts = (johnny_totals['points'].sum() + 2.0*(johnny_totals['assists'].sum() + johnny_totals['rebounds'].sum()) +
                         2.0*(johnny_totals['steals'].sum() + johnny_totals['blocks'].sum()))
 
     print 'TEAM\tPTS\tAST\tREB\tSTL\tBLK\tTOTAL'
