@@ -20,6 +20,27 @@ johnny = ['Lebron James',
           'LaMarcus Aldridge',
           'Kyle Lowry']
           
+other = ['DeMar DeRozan',
+         'Damian Lillard',
+         'J.R. Smith',
+         'Goran Dragic',
+         'CJ McCollum',
+         'Serge Ibaka',
+         'Harrison Barnes',
+         'Andre Iguodala',
+         'Shaun Livingston',
+         'Paul George',
+         'Steven Adams',
+         'DeMarre Carroll',
+         'Joe Johnson',
+         'Tristan Thompson',
+         'Bismack Biyombo',
+         'Andrew Bogut',
+         'Mason Plumlee',
+         'Jeff Teague',
+         'Matthew Dellavedova']
+         
+          
 def get_playoff_stats(name):
 
     name_split = name.split()
@@ -55,7 +76,7 @@ if __name__ == '__main__':
     vicki_totals = calc_team_totals(vicki)
     taro_totals = calc_team_totals(taro)
     johnny_totals = calc_team_totals(johnny)
-    
+
     vicki_total_pts = (vicki_totals['points'].sum() + 1.5*(vicki_totals['assists'].sum() + vicki_totals['rebounds'].sum()) +
                       2.0*(vicki_totals['steals'].sum() + vicki_totals['blocks'].sum()))
     taro_total_pts = (taro_totals['points'].sum() + 1.5*(taro_totals['assists'].sum() + taro_totals['rebounds'].sum()) +
