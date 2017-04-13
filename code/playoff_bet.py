@@ -1,3 +1,5 @@
+#!/Users/ttshimiz/anaconda/bin/python
+
 from nba_py import player
 import pandas as pd
 
@@ -15,7 +17,7 @@ vicki = ['Lebron James',
          'Kyle Lowry']
 
 johnny = ['Kawhi Leonard',
-          'Kevin Durant'
+          'Kevin Durant',
           'DeMar DeRozan',
           'Kevin Love',
           'James Harden']
