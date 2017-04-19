@@ -37,11 +37,12 @@ def get_playoff_stats(name):
 
 def calc_team_totals(team):
 
-    totals = pd.DataFrame(columns=['points', 'assists', 'rebounds', 'steals', 'blocks', 'total'],
+    totals = pd.DataFrame(columns=['ngames', 'points', 'assists', 'rebounds', 'steals', 'blocks', 'total'],
                           index=team)
     for p in team:
 
         stats = get_playoff_stats(p)
+        totals.loc[p, 'ngames'] = len(stats)
         totals.loc[p, 'points'] = stats['PTS'].sum()
         totals.loc[p, 'assists'] = stats['AST'].sum()
         totals.loc[p, 'rebounds'] = stats['REB'].sum()

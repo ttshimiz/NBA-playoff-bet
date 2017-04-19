@@ -64,23 +64,26 @@ if __name__ == '__main__':
     create_team(johnny_totals, 'johnny')
 
     totals = pd.DataFrame(index=['vicki', 'taro', 'johnny'],
-                          columns=['points', 'assists', 'rebounds', 'steals', 'blocks', 'total'])
+                          columns=['ngames', 'points', 'assists', 'rebounds', 'steals', 'blocks', 'total'])
 
-    totals.loc['vicki'] = pd.Series({'points': vicki_totals['points'].sum(),
+    totals.loc['vicki'] = pd.Series({'ngames': vicki_totals['ngames'].sum(),
+                                     'points': vicki_totals['points'].sum(),
                                      'assists': vicki_totals['assists'].sum(),
                                      'rebounds': vicki_totals['rebounds'].sum(),
                                      'steals': vicki_totals['steals'].sum(),
                                      'blocks': vicki_totals['blocks'].sum(),
                                      'total':  vicki_totals['total'].sum()})
 
-    totals.loc['taro'] = pd.Series({'points': taro_totals['points'].sum(),
+    totals.loc['taro'] = pd.Series({'ngames': taro_totals['ngames'].sum(),
+                                     'points': taro_totals['points'].sum(),
                                      'assists': taro_totals['assists'].sum(),
                                      'rebounds': taro_totals['rebounds'].sum(),
                                      'steals': taro_totals['steals'].sum(),
                                      'blocks': taro_totals['blocks'].sum(),
                                      'total':  taro_totals['total'].sum()})
 
-    totals.loc['johnny'] = pd.Series({'points': johnny_totals['points'].sum(),
+    totals.loc['johnny'] = pd.Series({'ngames': johnny_totals['ngames'].sum(),
+                                     'points': johnny_totals['points'].sum(),
                                      'assists': johnny_totals['assists'].sum(),
                                      'rebounds': johnny_totals['rebounds'].sum(),
                                      'steals': johnny_totals['steals'].sum(),
