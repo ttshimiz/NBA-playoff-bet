@@ -20,7 +20,7 @@
 
     <section class="main-content">
       <h3>
-<a id="current-standings" class="anchor" href="#current-standings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Current Standings</h3>
+<a id="current-standings" class="anchor" href="#current-standings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Current Standings as of {6}</h3>
 
 <table>
 <thead>

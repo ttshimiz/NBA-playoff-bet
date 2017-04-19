@@ -2,6 +2,7 @@
 
 import playoff_bet
 import pandas as pd
+import datetime
 
 def create_main(totals):
 
@@ -22,9 +23,10 @@ def create_main(totals):
     bot = totals.iloc[2]
     bot_title = titles[totals.index.values[2]]
 
+    today = datetime.date.today()
 
     with open('../index.html', 'w') as f:
-        f.write(index_text.format(top_title, top, mid_title, mid, bot_title, bot))
+        f.write(index_text.format(top_title, top, mid_title, mid, bot_title, bot, today.isoformat()))
 
     return
 
