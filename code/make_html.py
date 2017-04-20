@@ -10,6 +10,7 @@ def create_main(totals):
         index_text = f.read()
 
     totals.sort_values(by='total', inplace=True, ascending=False)
+    all_stats = playoff_bet.player_stats.sort_values(by='JVT_TOTAL', ascending=False)
 
     vstr = '<a href="teams/vicki.html">Vicki</a>'
     tstr = '<a href="teams/taro.html">Taro</a>'
@@ -26,7 +27,7 @@ def create_main(totals):
     today = datetime.date.today()
 
     with open('../index.html', 'w') as f:
-        f.write(index_text.format(top_title, top, mid_title, mid, bot_title, bot, today.isoformat()))
+        f.write(index_text.format(top_title, top, mid_title, mid, bot_title, bot, today.isoformat(), all_stats))
 
     return
 
@@ -55,9 +56,9 @@ def create_team(team, name):
 
 if __name__ == '__main__':
 
-    vicki_totals = playoff_bet.calc_team_totals(playoff_bet.vicki)
-    taro_totals = playoff_bet.calc_team_totals(playoff_bet.taro)
-    johnny_totals = playoff_bet.calc_team_totals(playoff_bet.johnny)
+    vicki_totals = playoff_bet.calc_team_totals(playoff_bet.vicki['players'])
+    taro_totals = playoff_bet.calc_team_totals(playoff_bet.taro['players'])
+    johnny_totals = playoff_bet.calc_team_totals(playoff_bet.johnny['players'])
 
     create_team(vicki_totals, 'vicki')
     create_team(taro_totals, 'taro')

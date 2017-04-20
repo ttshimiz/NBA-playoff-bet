@@ -1,38 +1,51 @@
 #!/Users/ttshimiz/anaconda/bin/python
 
-from nba_py import player
+from nba_py import player, team, league
 import pandas as pd
 
+# These variables change every year:
 # Drafted Players
-taro = ['Draymond Green',
-        'Stephen Curry',
-        'Klay Thompson',
-        'Kyrie Irving',
-        'Al Horford']
+taro = {'players':['Draymond Green',
+                   'Stephen Curry',
+                   'Klay Thompson',
+                   'Kyrie Irving',
+                   'Al Horford'],
+        'draft_pick': [5, 2, 11, 8, 14]}
 
-vicki = ['Lebron James',
-         'Russell Westbrook',
-         'Isaiah Thomas',
-         'LaMarcus Aldridge',
-         'Kyle Lowry']
+vicki = {'players':['LeBron James',
+                    'Russell Westbrook',
+                    'Isaiah Thomas',
+                    'LaMarcus Aldridge',
+                    'Kyle Lowry'],
+         'draft_pick': [1, 6, 7, 13, 12]}
 
-johnny = ['Kawhi Leonard',
-          'Kevin Durant',
-          'DeMar DeRozan',
-          'Kevin Love',
-          'James Harden']
+johnny = {'players':['Kawhi Leonard',
+                     'Kevin Durant',
+                     'DeMar DeRozan',
+                     'Kevin Love',
+                     'James Harden'],
+          'draft_pick': [4, 3, 10, 15, 9]}
 
+# Teams in the playoffs
+#playoff_teams = ['GSW', 'SAS', 'HOU', 'LAC', 'UTA', 'OKC', 'MEM', 'POR',
+#                 'BOS', 'CLE', 'TOR', 'WAS', 'ATL', 'MIL', 'IND', 'CHI']
 
+# Get all of the stats for all players in the playoffs
+player_stats = league.PlayerStats(season_type='Playoffs', per_mode='Totals').overall()
+
+# Add a column for each player's total points in our scoring system
+player_stats['JVT_TOTAL'] = player_stats['PTS'] + 2*(player_stats['AST'] + player_stats['REB'] +
+                                                     player_stats['STL'] + player_stats['BLK'])
 def get_playoff_stats(name):
 
-    name_split = name.split()
-    first = name_split[0]
-    last = name_split[1]
+#    name_split = name.split()
+#    first = name_split[0]
+#    last = name_split[1]
+#
+#    pid = player.get_player(first, last)
+    stats = player_stats[player_stats['PLAYER_NAME'] == name]
 
-    pid = player.get_player(first, last)
-    stats = player.PlayerGameLogs(pid, season_type='Playoffs')
-
-    return stats.info()
+    return stats
 
 
 def calc_team_totals(team):
@@ -42,14 +55,13 @@ def calc_team_totals(team):
     for p in team:
 
         stats = get_playoff_stats(p)
-        totals.loc[p, 'ngames'] = len(stats)
-        totals.loc[p, 'points'] = stats['PTS'].sum()
-        totals.loc[p, 'assists'] = stats['AST'].sum()
-        totals.loc[p, 'rebounds'] = stats['REB'].sum()
-        totals.loc[p, 'steals'] = stats['STL'].sum()
-        totals.loc[p, 'blocks'] = stats['BLK'].sum()
-        totals.loc[p, 'total'] = (stats['PTS'].sum() + 2.0*(stats['AST'].sum() + stats['REB'].sum()) +
-                                  2.0*(stats['STL'].sum() + stats['BLK'].sum()))
+        totals.loc[p, 'ngames'] = stats['GP'].values[0]
+        totals.loc[p, 'points'] = stats['PTS'].values[0]
+        totals.loc[p, 'assists'] = stats['AST'].values[0]
+        totals.loc[p, 'rebounds'] = stats['REB'].values[0]
+        totals.loc[p, 'steals'] = stats['STL'].values[0]
+        totals.loc[p, 'blocks'] = stats['BLK'].values[0]
+        totals.loc[p, 'total'] = stats['JVT_TOTAL'].values[0]
 
     return totals
 
