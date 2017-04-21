@@ -50,11 +50,13 @@ def get_playoff_stats(name):
 
 def calc_team_totals(team):
 
-    totals = pd.DataFrame(columns=['ngames', 'points', 'assists', 'rebounds', 'steals', 'blocks', 'total'],
-                          index=team)
-    for p in team:
+    totals = pd.DataFrame(columns=['draft_order', 'ngames', 'points', 'assists', 'rebounds', 'steals', 'blocks', 'total'],
+                          index=team['players'])
+
+    for i,p in enumerate(team['players']):
 
         stats = get_playoff_stats(p)
+        totals.loc[p, 'draft_order'] = team['draft_pick'][i]
         totals.loc[p, 'ngames'] = stats['GP'].values[0]
         totals.loc[p, 'points'] = stats['PTS'].values[0]
         totals.loc[p, 'assists'] = stats['AST'].values[0]

@@ -74,7 +74,7 @@
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Name (Draft Order)</th>
 <th>Games Played</th>
 <th>Points</th>
 <th>Assists</th>

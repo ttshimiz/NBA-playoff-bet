@@ -10,7 +10,8 @@ def create_main(totals):
         index_text = f.read()
 
     totals.sort_values(by='total', inplace=True, ascending=False)
-    all_stats = playoff_bet.player_stats.sort_values(by='JVT_TOTAL', ascending=False)
+
+    top15 = create_player_rankings()
 
     vstr = '<a href="teams/vicki.html">Vicki</a>'
     tstr = '<a href="teams/taro.html">Taro</a>'
@@ -27,9 +28,27 @@ def create_main(totals):
     today = datetime.date.today()
 
     with open('../index.html', 'w') as f:
-        f.write(index_text.format(top_title, top, mid_title, mid, bot_title, bot, today.isoformat(), all_stats))
+        f.write(index_text.format(top_title, top, mid_title, mid, bot_title, bot, today.isoformat(), top15))
 
     return
+
+def create_player_rankings():
+
+    all_stats = playoff_bet.player_stats.sort_values(by='JVT_TOTAL', ascending=False)
+
+    for i,p in enumerate(playoff_bet.vicki['players']):
+        all_stats.loc[all_stats['PLAYER_NAME'] == p,'PLAYER_NAME'] = p + ' (' + str(playoff_bet.vicki['draft_pick'][i]) + ')'
+
+    for i,p in enumerate(playoff_bet.taro['players']):
+        all_stats.loc[all_stats['PLAYER_NAME'] == p,'PLAYER_NAME'] = p + ' (' + str(playoff_bet.taro['draft_pick'][i]) + ')'
+
+    for i,p in enumerate(playoff_bet.johnny['players']):
+        all_stats.loc[all_stats['PLAYER_NAME'] == p,'PLAYER_NAME'] = p + ' (' + str(playoff_bet.johnny['draft_pick'][i]) + ')'
+
+
+    top15 = all_stats.iloc[0:15]
+
+    return top15
 
 
 def create_team(team, name):
@@ -38,15 +57,15 @@ def create_team(team, name):
         team_text = f.read()
     team.sort_values(by='total', inplace=True, ascending=False)
     p1 = team.iloc[0]
-    p1_name = team.index.values[0]
+    p1_name = team.index.values[0] + ' (' + str(team.iloc[0]['draft_order']) + ')'
     p2 = team.iloc[1]
-    p2_name = team.index.values[1]
+    p2_name = team.index.values[1] + ' (' + str(team.iloc[1]['draft_order']) + ')'
     p3 = team.iloc[2]
-    p3_name = team.index.values[2]
+    p3_name = team.index.values[2] + ' (' + str(team.iloc[2]['draft_order']) + ')'
     p4 = team.iloc[3]
-    p4_name = team.index.values[3]
+    p4_name = team.index.values[3] + ' (' + str(team.iloc[3]['draft_order']) + ')'
     p5 = team.iloc[4]
-    p5_name = team.index.values[4]
+    p5_name = team.index.values[4] + ' (' + str(team.iloc[4]['draft_order']) + ')'
 
     with open('../teams/'+name+'.html', 'w') as f:
         f.write(team_text.format(name.capitalize(), p1_name, p1, p2_name, p2, p3_name, p3,
@@ -56,9 +75,9 @@ def create_team(team, name):
 
 if __name__ == '__main__':
 
-    vicki_totals = playoff_bet.calc_team_totals(playoff_bet.vicki['players'])
-    taro_totals = playoff_bet.calc_team_totals(playoff_bet.taro['players'])
-    johnny_totals = playoff_bet.calc_team_totals(playoff_bet.johnny['players'])
+    vicki_totals = playoff_bet.calc_team_totals(playoff_bet.vicki)
+    taro_totals = playoff_bet.calc_team_totals(playoff_bet.taro)
+    johnny_totals = playoff_bet.calc_team_totals(playoff_bet.johnny)
 
     create_team(vicki_totals, 'vicki')
     create_team(taro_totals, 'taro')
